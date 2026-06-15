@@ -137,7 +137,7 @@ export function VendorsPage() {
               </div>
               <div className="flex flex-col items-end space-y-2">
                 <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                  vendor.role === 'CEO' ? 'bg-[var(--ali-navy)] text-white' : 'bg-cyan-50 text-[var(--ali-navy)]'
+                  vendor.role === 'CEO' ? 'bg-[var(--dp-navy)] text-white' : 'bg-cyan-50 text-[var(--dp-navy)]'
                 }`}>
                   {vendor.role}
                 </span>

@@ -43,7 +43,7 @@ export function CEODashboard() {
       <section className="app-panel p-5 sm:p-6">
         <span className="eyebrow">Visão executiva</span>
         <h1 className="page-title mt-3">Dashboard CEO</h1>
-        <p className="page-subtitle mt-2">Resumo financeiro e comercial da ALI Digital</p>
+        <p className="page-subtitle mt-2">Resumo financeiro e comercial da DeliPlay</p>
       </section>
 
       <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">

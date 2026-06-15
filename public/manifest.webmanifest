@@ -1,7 +1,7 @@
 {
-  "name": "ALI Digital CRM",
-  "short_name": "ALI CRM",
-  "description": "CRM da ALI Digital para gestão comercial, clientes e financeiro.",
+  "name": "DeliPlay CRM",
+  "short_name": "DeliPlay CRM",
+  "description": "DeliPlay CRM para gestão comercial, clientes e financeiro.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

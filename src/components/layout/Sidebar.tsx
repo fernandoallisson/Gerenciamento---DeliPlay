@@ -37,7 +37,7 @@ export function Sidebar({ activePage, onNavigate, isOpen, onClose }: SidebarProp
       {isOpen && <div className="fixed inset-0 z-40 bg-slate-950/50 backdrop-blur-sm lg:hidden" onClick={onClose} />}
 
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-white/10 bg-[var(--ali-navy)] text-white shadow-2xl transition-transform duration-300 lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-white/10 bg-[var(--dp-navy)] text-white shadow-2xl transition-transform duration-300 lg:translate-x-0 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -63,11 +63,11 @@ export function Sidebar({ activePage, onNavigate, isOpen, onClose }: SidebarProp
                   onClick={() => onNavigate(link.id)}
                   className={`flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left text-sm font-medium transition ${
                     isActive
-                      ? 'bg-white text-[var(--ali-navy)] shadow-lg shadow-cyan-950/20'
+                      ? 'bg-white text-[var(--dp-navy)] shadow-lg shadow-cyan-950/20'
                       : 'text-slate-100 hover:bg-white/10 hover:text-white'
                   }`}
                 >
-                  <span className={`flex h-10 w-10 items-center justify-center rounded-xl ${isActive ? 'bg-cyan-100 text-[var(--ali-navy)]' : 'bg-white/10 text-cyan-100'}`}>
+                  <span className={`flex h-10 w-10 items-center justify-center rounded-xl ${isActive ? 'bg-cyan-100 text-[var(--dp-navy)]' : 'bg-white/10 text-cyan-100'}`}>
                     <Icon size={18} />
                   </span>
                   <span>{link.label}</span>
@@ -79,7 +79,7 @@ export function Sidebar({ activePage, onNavigate, isOpen, onClose }: SidebarProp
 
         <div className="border-t border-white/10 px-5 py-4">
           <div className="rounded-2xl bg-white/5 p-4">
-            <p className="text-sm font-medium text-white">Painel ALI Digital</p>
+            <p className="text-sm font-medium text-white">Painel DeliPlay</p>
           </div>
         </div>
       </aside>

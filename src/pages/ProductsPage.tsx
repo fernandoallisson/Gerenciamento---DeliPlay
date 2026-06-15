@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Edit2, Plus, Search, Trash2 } from 'lucide-react';
+import { CreditCard as Edit2, Plus, Search, Trash2 } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { ProductFormModal } from '../components/products/ProductFormModal';
 import { Product, productsStore } from '../stores/productsStore';
@@ -66,7 +66,7 @@ export function ProductsPage() {
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <h1 className="page-title">Produtos</h1>
-          <p className="page-subtitle">Gerenciar produtos digitais do ecossistema ALI</p>
+          <p className="page-subtitle">Gerenciar produtos digitais do ecossistema DeliPlay</p>
         </div>
         <Button onClick={() => setShowModal(true)} className="flex items-center space-x-2 w-full sm:w-auto">
           <Plus size={18} />

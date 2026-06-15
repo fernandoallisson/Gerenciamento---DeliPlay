@@ -31,10 +31,10 @@ export function Login() {
       <div className="relative grid w-full max-w-5xl overflow-hidden rounded-[2rem] border border-white/20 bg-white/10 shadow-2xl backdrop-blur-xl lg:grid-cols-[1.1fr_0.9fr]">
         <div className="hidden flex-col justify-between bg-[linear-gradient(180deg,rgba(35,54,84,0.92),rgba(35,54,84,0.82))] p-8 text-white lg:flex">
           <div>
-            <span className="eyebrow bg-white/10 text-cyan-100">ALI Digital</span>
-            <h1 className="mt-6 text-4xl font-semibold leading-tight">CRM - ALI Digital </h1>
+            <span className="eyebrow bg-white/10 text-cyan-100">DeliPlay CRM</span>
+            <h1 className="mt-6 text-4xl font-semibold leading-tight">DeliPlay CRM</h1>
             <p className="mt-4 max-w-md text-sm leading-6 text-cyan-50/80">
-              Entre com suas credenciais ou nos encaminhe um email e faça parte da nossa comunidade ALI Digital.
+              Entre com suas credenciais para acessar o painel de gestão comercial.
             </p>
           </div>
           <div className="grid gap-3 text-sm text-cyan-50/80">

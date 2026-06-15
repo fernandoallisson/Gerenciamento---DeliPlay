@@ -19,7 +19,7 @@ export function Header({ onMenuClick }: HeaderProps) {
         <div className="flex min-w-0 items-center gap-3">
           <button
             onClick={onMenuClick}
-            className="rounded-2xl border border-slate-200 bg-white p-2.5 text-slate-700 shadow-sm transition hover:border-cyan-200 hover:text-[var(--ali-navy)] lg:hidden"
+            className="rounded-2xl border border-slate-200 bg-white p-2.5 text-slate-700 shadow-sm transition hover:border-cyan-200 hover:text-[var(--dp-navy)] lg:hidden"
           >
             <Menu size={22} />
           </button>
@@ -27,13 +27,13 @@ export function Header({ onMenuClick }: HeaderProps) {
             <BrandLogo compact />
           </div>
           <div className="hidden lg:block">
-            <span className="eyebrow">CRM ALI Digital</span>
+            <span className="eyebrow">DeliPlay CRM</span>
           </div>
         </div>
 
         <div className="flex items-center gap-2 sm:gap-4">
           <div className="hidden items-center gap-3 rounded-2xl border border-slate-200 bg-white px-3 py-2 shadow-sm sm:flex">
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[var(--ali-surface-soft)] text-[var(--ali-navy)]">
+            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[var(--dp-surface-soft)] text-[var(--dp-navy)]">
               <User size={18} />
             </div>
             <div className="min-w-0">

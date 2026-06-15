@@ -95,7 +95,7 @@ function AppContent() {
         <div className="app-panel w-full max-w-sm p-6 text-center sm:p-8">
           <BrandLogo className="mb-6 justify-center" />
           <div className="mx-auto mb-4 h-2 w-24 overflow-hidden rounded-full bg-slate-200">
-            <div className="h-full w-2/3 animate-pulse rounded-full bg-[var(--ali-cyan)]" />
+            <div className="h-full w-2/3 animate-pulse rounded-full bg-[var(--dp-cyan)]" />
           </div>
           <p className="text-sm text-slate-500">Carregando ambiente...</p>
         </div>
