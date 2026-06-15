@@ -43,74 +43,68 @@ Deno.serve(async (req: Request) => {
       );
     }
 
-    // Check if caller is CEO or same user
+    // Check if caller is CEO
     const { data: callerProfile } = await supabaseAdmin
       .from("profiles")
       .select("role")
       .eq("id", caller.id)
       .single();
 
-    const isCEO = callerProfile?.role === "CEO";
-
-    if (req.method === "POST") {
-      const { userId, newPassword } = await req.json();
-
-      if (!userId || !newPassword) {
-        return new Response(
-          JSON.stringify({ error: "userId and newPassword are required" }),
-          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-        );
-      }
-
-      const isSameUser = userId === caller.id;
-      if (!isCEO && !isSameUser) {
-        return new Response(
-          JSON.stringify({ error: "Unauthorized" }),
-          { status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-        );
-      }
-
-      const { error: updateError } =
-        await supabaseAdmin.auth.admin.updateUserById(userId, { password: newPassword });
-
-      if (updateError) {
-        return new Response(
-          JSON.stringify({ error: updateError.message }),
-          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-        );
-      }
-
+    if (!callerProfile || callerProfile.role !== "CEO") {
       return new Response(
-        JSON.stringify({ success: true, message: "Senha alterada com sucesso" }),
-        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        JSON.stringify({ error: "Only CEO can manage users" }),
+        { status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
-    if (req.method === "DELETE") {
-      const { userId } = await req.json();
+    if (req.method === "POST") {
+      const { email, password, name, role, commission_percent } = await req.json();
 
-      if (!isCEO) {
+      if (!email || !password || !name) {
         return new Response(
-          JSON.stringify({ error: "Only CEO can delete users" }),
-          { status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-        );
-      }
-
-      const { error: deleteError } =
-        await supabaseAdmin.auth.admin.deleteUser(userId);
-
-      if (deleteError) {
-        return new Response(
-          JSON.stringify({ error: deleteError.message }),
+          JSON.stringify({ error: "Email, password and name are required" }),
           { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
         );
       }
 
-      // Also delete the profile
-      await supabaseAdmin.from("profiles").delete().eq("id", userId);
+      // Create auth user
+      const { data: userData, error: createError } =
+        await supabaseAdmin.auth.admin.createUser({
+          email,
+          password,
+          email_confirm: true,
+          user_metadata: { name },
+        });
+
+      if (createError) {
+        return new Response(
+          JSON.stringify({ error: createError.message }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+
+      // Create profile
+      const { error: profileError } = await supabaseAdmin
+        .from("profiles")
+        .insert({
+          id: userData.user.id,
+          name,
+          email,
+          role: role || "Vendedor",
+          commission_percent: commission_percent || 0,
+        });
+
+      if (profileError) {
+        // Rollback: delete auth user if profile creation fails
+        await supabaseAdmin.auth.admin.deleteUser(userData.user.id);
+        return new Response(
+          JSON.stringify({ error: profileError.message }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
 
       return new Response(
-        JSON.stringify({ success: true, message: "Usuário deletado com sucesso" }),
+        JSON.stringify({ success: true, user: { id: userData.user.id, email, name, role } }),
         { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }

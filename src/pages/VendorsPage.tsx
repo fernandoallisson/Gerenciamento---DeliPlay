@@ -99,7 +99,7 @@ export function VendorsPage() {
 
         if (error) throw error;
       } else {
-        await (signUp as any)(formData.email, formData.password, formData.name, formData.role);
+        await signUp(formData.email, formData.password, formData.name, formData.role);
       }
 
       handleCloseModal();
