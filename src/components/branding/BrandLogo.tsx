@@ -15,7 +15,7 @@ export function BrandLogo({ className = '', compact = false, dark = false }: Bra
     <div className={`flex items-center gap-3 ${className}`}>
       {!imageError ? (
         <img
-          src="/assets/ali-digital-logo.png"
+          src="/assets/logo4.png"
           alt="DeliPlay CRM"
           className={`object-contain ${compact ? 'h-10 w-10' : 'h-12 w-12 sm:h-14 sm:w-14'}`}
           onError={() => setImageError(true)}
